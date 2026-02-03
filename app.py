@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import matplotlib.patches as mpatches
 import platform
+import os
 
 # ---------------------------------------------------------
 # 1. 페이지 및 폰트 설정
