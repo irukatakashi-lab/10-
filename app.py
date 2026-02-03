@@ -11,18 +11,31 @@ import platform
 st.set_page_config(page_title="암 사망률 변화 분석", layout="wide")
 
 # Seaborn 테마 적용
-sns.set_theme(style="whitegrid", font_scale=1.1)
+sns.set_theme(style="white", font_scale=1.1)
 
-# 한글 폰트 설정
-system_name = platform.system()
-if system_name == "Darwin":  # Mac
-    plt.rc('font', family='AppleGothic')
-elif system_name == "Windows":  # Windows
-    plt.rc('font', family='Malgun Gothic')
-else:  # Linux
-    plt.rc('font', family='NanumGothic')
+# 폰트 설정 로직 (Streamlit Cloud 리눅스 환경 대응)
+def setup_korean_font():
+    system_name = platform.system()
+    
+    if system_name == "Windows":
+        plt.rc('font', family='Malgun Gothic')
+    elif system_name == "Darwin": # Mac
+        plt.rc('font', family='AppleGothic')
+    else: # Linux (Streamlit Cloud)
+        # 1단계에서 설치한 나눔 폰트 경로를 찾습니다.
+        path = '/usr/share/fonts/truetype/nanum/NanumGothic.ttf'
+        if os.path.exists(path):
+            fontprop = fm.FontProperties(fname=path)
+            plt.rc('font', family=fontprop.get_name())
+        else:
+            # 폰트가 없을 경우 경고 메시지 (패키지 설치 필요)
+            st.warning("⚠️ 한글 폰트가 설치되지 않았습니다. packages.txt 파일을 확인해주세요.")
+            plt.rc('font', family='NanumGothic') # 설치됐다고 가정하고 시도
 
-plt.rc('axes', unicode_minus=False)
+    plt.rc('axes', unicode_minus=False) # 마이너스 기호 깨짐 방지
+
+# 폰트 설정 함수 실행
+setup_korean_font()
 
 # ---------------------------------------------------------
 # 2. 데이터 전처리 함수
