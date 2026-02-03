@@ -66,7 +66,7 @@ st.title("📊 암 사망률 변화 (Top 10)")
 st.markdown("데이터 출처: 국립암센터 / 통계청")
 
 try:
-    df, years = load_data('암사망률.csv')
+    df, years = load_data('cancer_data.csv')
     min_year, max_year = int(min(years)), int(max(years))
 except FileNotFoundError:
     st.warning("폴더에 '암사망률.csv' 파일이 없습니다.")
