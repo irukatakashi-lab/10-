@@ -2,7 +2,8 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-import matplotlib.patches as mpatches
+import matplotlib.patches as mpatches # 화살표나 범례 그릴 때 필요
+import matplotlib.font_manager as fm  # 폰트 설정할 때 필요
 import platform
 import os
 
