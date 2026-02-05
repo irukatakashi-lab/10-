@@ -165,8 +165,8 @@ else:
     ax.grid(axis='y', linestyle='--', alpha=0.5) 
 
     # 범례
-    red_patch = mpatches.Patch(color=palette_red, label='증가 (Worsened)')
-    blue_patch = mpatches.Patch(color=palette_blue, label='감소 (Improved)')
+    red_patch = mpatches.Patch(color=palette_red, label='증가')
+    blue_patch = mpatches.Patch(color=palette_blue, label='감소')
     ax.legend(handles=[red_patch, blue_patch], loc='lower right', frameon=True)
 
     st.pyplot(fig)
