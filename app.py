@@ -157,7 +157,7 @@ else:
                    alpha=0.85, height=0.6, edgecolor='white')
 
     # [스타일 통일] 제목 폰트, 크기, 굵기 2번 코드와 일치시킴
-    ax.set_title(f'{start_year}년 대비 {end_year}년 암 사망률 변화 (10만 명당)', 
+    ax.set_title(f'{start_year}년 대비 {end_year}년 암 사망률 변화 (10만 명당 사망자 수)', 
                  fontsize=16, fontweight='bold', pad=20)
     
     ax.set_xlabel('사망률', fontsize=12)
